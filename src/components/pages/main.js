@@ -109,7 +109,7 @@ export default class Main extends Component {
   save() {
     if (this.state.fileId === "") {
       let name = prompt("Choose A File Name");
-      axios.post("https://digital-paper-api.herokuapp.com/file/add", {
+      axios.post("http://127.0.0.1:5000/file/add", {
         user: {
           file_name: name,
           file: JSON.stringify(this.state.file),
@@ -117,7 +117,7 @@ export default class Main extends Component {
         },
       });
     } else {
-      axios.put(`https://digital-paper-api.herokuapp.com/file/update/${this.state.fileId}`, {
+      axios.put(`http://127.0.0.1:5000/file/update/${this.state.fileId}`, {
         user: {
           file_name: this.state.fileName,
           file: JSON.stringify(this.state.file),
@@ -128,7 +128,7 @@ export default class Main extends Component {
 
   openFile(id) {
     this.resetState()
-    axios.get(`https://digital-paper-api.herokuapp.com/file/get/${id}`).then((response) => {
+    axios.get(`http://127.0.0.1:5000/file/get/${id}`).then((response) => {
       this.setState({
         fileName: response.data.file_name,
         fileId: response.data.id,
@@ -160,7 +160,7 @@ export default class Main extends Component {
 
   getFiles() {
     axios
-    .get(`https://digital-paper-api.herokuapp.com/user/get/${this.state.id}`)
+    .get(`http://127.0.0.1:5000/user/get/${this.state.id}`)
     .then(response => {
       const Data = response.data.files
       this.setState({
@@ -170,7 +170,7 @@ export default class Main extends Component {
   }
 
   deleteFile(id) {
-    axios.delete(`https://digital-paper-api.herokuapp.com/file/delete/${id}`);
+    axios.delete(`http://127.0.0.1:5000/file/delete/${id}`);
     this.getFiles()
     this.setState({
       pickerOn: false
@@ -178,7 +178,7 @@ export default class Main extends Component {
   }
 
   deleteUser() {
-    axios.delete(`https://digital-paper-api.herokuapp.com/user/delete/${this.state.id}`);
+    axios.delete(`http://127.0.0.1:5000/user/delete/${this.state.id}`);
     this.props.logout();
   }
 

@@ -52,7 +52,7 @@ export default class Login extends Component {
 
   valid(event) {
     axios
-      .post("https://digital-paper-api.herokuapp.com/user/verify", {
+      .post("http://127.0.0.1:5000/user/verify", {
         user: {
           email: this.state.email,
           password: this.state.password,
@@ -114,7 +114,7 @@ export default class Login extends Component {
 
   submit(event) {
     axios
-      .post("https://digital-paper-api.herokuapp.com/user/verify", {
+      .post("http://127.0.0.1:5000/user/verify", {
         user: {
           email: this.state.email,
           password: this.state.password,
@@ -143,7 +143,7 @@ export default class Login extends Component {
       return null;
     }
     axios
-      .post("https://digital-paper-api.herokuapp.com/user/add", {
+      .post("http://127.0.0.1:5000/user/add", {
         user: {
           email: this.state.email,
           password: this.state.password,
@@ -163,7 +163,7 @@ export default class Login extends Component {
   resetPassword(event) {
     if (this.state.newPassword === this.state.retypePassword) {
     axios
-    .put(`https://digital-paper-api.herokuapp.com/user/resetpass/${this.state.id}`, {
+    .put(`http://127.0.0.1:5000/user/resetpass/${this.state.id}`, {
       user: {
         password: this.state.newPassword,
       },
