@@ -143,7 +143,7 @@ export default class Login extends Component {
       return null;
     }
     axios
-      .post("http://127.0.0.1:5000/user/add", {
+      .post("https://digital-paper-api.herokuapp.com/user/add", {
         user: {
           email: this.state.email,
           password: this.state.password,
